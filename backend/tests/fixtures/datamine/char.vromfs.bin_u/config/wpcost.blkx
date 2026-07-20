@@ -1,0 +1,33 @@
+{
+  "us_m2a4": {
+    "value": 4000,
+    "expMul": 1.0,
+    "economicRankArcade": 1,
+    "economicRankHistorical": 1,
+    "economicRankSimulation": 1
+  },
+  "us_m3_stuart": {
+    "reqExp": 2900,
+    "value": 7000,
+    "expMul": 1.25,
+    "economicRankArcade": 3,
+    "economicRankHistorical": 3,
+    "economicRankSimulation": 3
+  },
+  "us_m3a1_stuart": {
+    "reqExp": 4000,
+    "value": 10000,
+    "expMul": 1.3,
+    "economicRankArcade": 4,
+    "economicRankHistorical": 4,
+    "economicRankSimulation": 4
+  },
+  "us_m901_itv": {
+    "reqExp": 180000,
+    "value": 520000,
+    "expMul": 2.0,
+    "economicRankArcade": 23,
+    "economicRankHistorical": 23,
+    "economicRankSimulation": 23
+  }
+}

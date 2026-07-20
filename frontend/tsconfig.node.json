@@ -1,13 +1,12 @@
 {
   "compilerOptions": {
-    "composite": true,
     "module": "ESNext",
     "moduleResolution": "Bundler",
-    "types": ["node"],
-    "baseUrl": ".",
-    "paths": {
-      "rollup/parseAst": ["node_modules/rollup/dist/parseAst.d.ts"]
-    }
+    "strict": true,
+    "noEmit": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "types": ["node"]
   },
   "include": ["vite.config.ts"]
 }

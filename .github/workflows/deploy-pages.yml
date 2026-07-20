@@ -1,8 +1,10 @@
-name: Deploy Frontend to GitHub Pages
+name: Deploy web to GitHub Pages
 
 on:
-  push:
-    branches: [ main ]
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -11,32 +13,37 @@ permissions:
   id-token: write
 
 concurrency:
-  group: 'pages'
+  group: pages
   cancel-in-progress: true
 
 jobs:
   build:
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.7.0
       - uses: actions/setup-node@v4
         with:
-          node-version: 20   # bez cache — brak lockfile’a
-
+          node-version: '22.19.0'
+          cache: pnpm
+          cache-dependency-path: frontend/pnpm-lock.yaml
       - name: Build
         working-directory: frontend
         env:
-          # Ustaw w repo → Settings → Variables → Actions → API_BASE_URL
           VITE_API_BASE_URL: ${{ vars.API_BASE_URL }}
-          # Wymusza prawidłowe base dla GitHub Pages w vite.config.ts
+          VITE_AUTH_ENABLED: 'false'
           GITHUB_PAGES: 'true'
         run: |
-          npm install --no-audit --no-fund
-          npm run build
-
-      - name: Upload artifact for Pages
-        uses: actions/upload-pages-artifact@v3
+          pnpm install --frozen-lockfile
+          pnpm audit --prod --audit-level=high
+          pnpm test
+          pnpm run build
+      - uses: actions/upload-pages-artifact@v3
         with:
           path: frontend/dist
 

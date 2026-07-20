@@ -1,82 +1,88 @@
-from datetime import datetime
+from __future__ import annotations
 
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import ForeignKey, UniqueConstraint
-from sqlalchemy.orm import Mapped, mapped_column, relationship, validates
+from datetime import UTC, datetime
 
-db = SQLAlchemy()
+from sqlalchemy import Boolean, DateTime, Float, ForeignKey, Integer, String, UniqueConstraint
+from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
 
 
-# ── Słowniki ────────────────────────────────────────────────────────────────────
-class Nation(db.Model):
+def utc_now() -> datetime:
+    return datetime.now(UTC)
+
+
+class Base(DeclarativeBase):
+    pass
+
+
+class Nation(Base):
     __tablename__ = "nations"
 
-    id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
-    slug: Mapped[str] = mapped_column(unique=True, nullable=False)   # np. "usa", "germany"
-    name: Mapped[str] = mapped_column(nullable=False)                 # np. "USA"
-    flag_url: Mapped[str | None] = mapped_column(nullable=True)
-
-    def __repr__(self) -> str:
-        return f"<Nation {self.slug}>"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    slug: Mapped[str] = mapped_column(String(32), unique=True, index=True)
+    name: Mapped[str] = mapped_column(String(80))
+    flag_url: Mapped[str | None] = mapped_column(String(500))
 
 
-class VehicleClass(db.Model):
+class VehicleClass(Base):
     __tablename__ = "vehicle_classes"
 
-    id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
-    name: Mapped[str] = mapped_column(unique=True, nullable=False)   # army|helicopter|aviation|coastal|bluewater
-
-    def __repr__(self) -> str:
-        return f"<VehicleClass {self.name}>"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    name: Mapped[str] = mapped_column(String(32), unique=True, index=True)
 
 
-class Rank(db.Model):
+class Rank(Base):
     __tablename__ = "ranks"
 
-    id: Mapped[int] = mapped_column(primary_key=True)  # 1..8
-    label: Mapped[str] = mapped_column(nullable=False)
-
-    def __repr__(self) -> str:
-        return f"<Rank {self.id}:{self.label}>"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    label: Mapped[str] = mapped_column(String(16))
 
 
-# ── Pojazd ──────────────────────────────────────────────────────────────────────
-class Vehicle(db.Model):
+class Vehicle(Base):
     __tablename__ = "vehicles"
 
-    id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
-    name: Mapped[str] = mapped_column(nullable=False, index=True)
+    id: Mapped[int] = mapped_column(primary_key=True)
+    source_key: Mapped[str | None] = mapped_column(String(160), unique=True, index=True)
+    source_name: Mapped[str | None] = mapped_column(String(80), index=True)
+    source_version: Mapped[str | None] = mapped_column(String(64), index=True)
+    name: Mapped[str] = mapped_column(String(160), index=True)
+    nation_id: Mapped[int] = mapped_column(ForeignKey("nations.id"), index=True)
+    class_id: Mapped[int] = mapped_column(ForeignKey("vehicle_classes.id"), index=True)
+    rank_id: Mapped[int] = mapped_column(ForeignKey("ranks.id"), index=True)
 
-    nation_id: Mapped[int] = mapped_column(ForeignKey("nations.id"), nullable=False, index=True)
-    class_id: Mapped[int] = mapped_column(ForeignKey("vehicle_classes.id"), nullable=False, index=True)
-    rank_id: Mapped[int] = mapped_column(ForeignKey("ranks.id"), nullable=False, index=True)
+    is_tree: Mapped[bool] = mapped_column(Boolean, default=True)
+    is_premium: Mapped[bool] = mapped_column(Boolean, default=False)
+    is_collector: Mapped[bool] = mapped_column(Boolean, default=False)
+    folder_of: Mapped[int | None] = mapped_column(ForeignKey("vehicles.id"), index=True)
+    folder_key: Mapped[str | None] = mapped_column(String(160), index=True)
 
-    # typy: drzewkowy/premium/kolekcjonerski (dokładnie jeden)
-    is_tree: Mapped[bool] = mapped_column(default=True, nullable=False)
-    is_premium: Mapped[bool] = mapped_column(default=False, nullable=False)
-    is_collector: Mapped[bool] = mapped_column(default=False, nullable=False)
+    role: Mapped[str | None] = mapped_column(String(64), index=True)
+    availability: Mapped[str] = mapped_column(String(32), default="researchable", index=True)
+    research_type: Mapped[str] = mapped_column(String(32), default="standard")
+    tree_column: Mapped[int | None] = mapped_column(Integer)
+    tree_order: Mapped[int | None] = mapped_column(Integer)
 
-    # BR i koszty
-    br_ab: Mapped[float | None] = mapped_column(nullable=True)
-    br_rb: Mapped[float | None] = mapped_column(nullable=True)
-    br_sb: Mapped[float | None] = mapped_column(nullable=True)
+    br_ab: Mapped[float | None] = mapped_column(Float)
+    br_rb: Mapped[float | None] = mapped_column(Float)
+    br_sb: Mapped[float | None] = mapped_column(Float)
+    rp_multiplier: Mapped[float | None] = mapped_column(Float)
+    rp_cost: Mapped[int | None] = mapped_column(Integer)
+    sl_cost: Mapped[int | None] = mapped_column(Integer)
+    ge_cost: Mapped[int | None] = mapped_column(Integer)
+    gjn_cost: Mapped[float | None] = mapped_column(Float)
+    marketplace_item_id: Mapped[int | None] = mapped_column(Integer, index=True)
+    image_url: Mapped[str | None] = mapped_column(String(500))
+    wiki_url: Mapped[str | None] = mapped_column(String(500))
+    retired_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
 
-    rp_cost: Mapped[int | None] = mapped_column(nullable=True)
-    ge_cost: Mapped[int | None] = mapped_column(nullable=True)       # Golden Eagles (premium)
-    gjn_cost: Mapped[int | None] = mapped_column(nullable=True)      # Gaijin Coin (kolekcjonerskie)
+    nation: Mapped[Nation] = relationship(lazy="joined")
+    vehicle_class: Mapped[VehicleClass] = relationship(lazy="joined")
+    rank: Mapped[Rank] = relationship(lazy="joined")
 
-    image_url: Mapped[str | None] = mapped_column(nullable=True)
-    wiki_url: Mapped[str | None] = mapped_column(nullable=True)
+    @property
+    def is_reserve(self) -> bool:
+        """Tree vehicles without a research cost are starter reserves."""
+        return self.is_tree and self.rp_cost is None
 
-    # wariant „w folderze” -> id pojazdu-rodzica
-    folder_of: Mapped[int | None] = mapped_column(ForeignKey("vehicles.id"), nullable=True, index=True)
-
-    nation = relationship("Nation")
-    vclass = relationship("VehicleClass")
-    rank = relationship("Rank")
-    folder_parent = relationship("Vehicle", remote_side=[id], uselist=False)
-
-    # Wygodny string typu pojazdu do API/serializacji
     @property
     def type_str(self) -> str:
         if self.is_premium:
@@ -85,83 +91,74 @@ class Vehicle(db.Model):
             return "collector"
         return "tree"
 
-    # „Miękka” normalizacja: jeśli któryś z typów ustawiony na True,
-    # wyłącz pozostałe – utrzymujemy wyłączność flag.
-    @validates("is_tree", "is_premium", "is_collector")
-    def _validate_type_flags(self, key: str, value: bool) -> bool:
-        v = bool(value)
-        if v:
-            if key != "is_tree" and getattr(self, "is_tree", False):
-                self.is_tree = False
-            if key != "is_premium" and getattr(self, "is_premium", False):
-                self.is_premium = False
-            if key != "is_collector" and getattr(self, "is_collector", False):
-                self.is_collector = False
-        return v
 
-    def __repr__(self) -> str:
-        return f"<Vehicle {self.id}:{self.name} ({self.type_str})>"
+class CatalogSnapshot(Base):
+    __tablename__ = "catalog_snapshots"
+    __table_args__ = (UniqueConstraint("source", "revision", name="uq_catalog_snapshot_source_revision"),)
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    source: Mapped[str] = mapped_column(String(80), index=True)
+    version: Mapped[str] = mapped_column(String(64), index=True)
+    revision: Mapped[str] = mapped_column(String(64))
+    checksum: Mapped[str] = mapped_column(String(64))
+    source_url: Mapped[str | None] = mapped_column(String(500))
+    imported_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utc_now)
+    vehicle_count: Mapped[int] = mapped_column(Integer)
+    warning_count: Mapped[int] = mapped_column(Integer, default=0)
+    is_active: Mapped[bool] = mapped_column(Boolean, default=True, index=True)
 
 
-# ── Relacje drzewka: poprzednik -> następca ─────────────────────────────────────
-class VehicleEdge(db.Model):
+class VehicleEdge(Base):
     __tablename__ = "vehicle_edges"
-    __table_args__ = (UniqueConstraint("parent_id", "child_id", name="uq_edge_parent_child"),)
+    __table_args__ = (UniqueConstraint("parent_id", "child_id", name="uq_vehicle_edge"),)
 
-    id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
-    parent_id: Mapped[int] = mapped_column(ForeignKey("vehicles.id"), nullable=False, index=True)
-    child_id: Mapped[int] = mapped_column(ForeignKey("vehicles.id"), nullable=False, index=True)
-
-    # jeśli koszt RP odblokowania różni się od rp_cost dziecka (opcjonalnie)
-    unlock_rp: Mapped[int | None] = mapped_column(nullable=True)
-
-    parent = relationship("Vehicle", foreign_keys=[parent_id])
-    child = relationship("Vehicle", foreign_keys=[child_id])
-
-    def __repr__(self) -> str:
-        return f"<Edge {self.parent_id}->{self.child_id}>"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    parent_id: Mapped[int] = mapped_column(ForeignKey("vehicles.id"), index=True)
+    child_id: Mapped[int] = mapped_column(ForeignKey("vehicles.id"), index=True)
+    unlock_rp: Mapped[int | None] = mapped_column(Integer)
+    source_name: Mapped[str | None] = mapped_column(String(80), index=True)
 
 
-# ── Użytkownik i progres ────────────────────────────────────────────────────────
-class User(db.Model):
+class User(Base):
     __tablename__ = "users"
 
-    id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
-    email: Mapped[str] = mapped_column(unique=True, nullable=False, index=True)
-    password_hash: Mapped[str] = mapped_column(nullable=False)
-    created_at: Mapped[datetime] = mapped_column(default=datetime.utcnow, nullable=False)
+    id: Mapped[int] = mapped_column(primary_key=True)
+    email: Mapped[str] = mapped_column(String(320), unique=True, index=True)
+    password_hash: Mapped[str] = mapped_column(String(512))
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utc_now)
 
-    profile = relationship("UserProfile", back_populates="user", uselist=False)
-
-    def __repr__(self) -> str:
-        return f"<User {self.email}>"
+    sessions: Mapped[list[UserSession]] = relationship(cascade="all, delete-orphan")
 
 
-class UserProfile(db.Model):
-    __tablename__ = "user_profiles"
+class UserSession(Base):
+    __tablename__ = "user_sessions"
 
-    user_id: Mapped[int] = mapped_column(ForeignKey("users.id"), primary_key=True)
-    avg_rp_per_battle: Mapped[int | None] = mapped_column(nullable=True)
-    avg_battle_minutes: Mapped[int | None] = mapped_column(nullable=True)
-    has_premium: Mapped[bool] = mapped_column(default=False, nullable=False)
-    booster_percent: Mapped[int | None] = mapped_column(nullable=True)       # np. 50 = +50%
-    skill_bonus_percent: Mapped[int | None] = mapped_column(nullable=True)   # np. 10 = +10%
+    id: Mapped[int] = mapped_column(primary_key=True)
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.id"), index=True)
+    token_hash: Mapped[str] = mapped_column(String(64), unique=True, index=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utc_now)
+    last_seen_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utc_now)
+    expires_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), index=True)
+    revoked_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), index=True)
 
-    user = relationship("User", back_populates="profile")
+
+class AuthThrottle(Base):
+    __tablename__ = "auth_throttles"
+
+    key_hash: Mapped[str] = mapped_column(String(64), primary_key=True)
+    failures: Mapped[int] = mapped_column(Integer, default=0)
+    window_started_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utc_now)
+    blocked_until: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), index=True)
+    updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utc_now)
 
 
-class UserVehicleProgress(db.Model):
+class UserVehicleProgress(Base):
     __tablename__ = "user_vehicle_progress"
     __table_args__ = (UniqueConstraint("user_id", "vehicle_id", name="uq_user_vehicle"),)
 
-    id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
-    user_id: Mapped[int] = mapped_column(ForeignKey("users.id"), nullable=False, index=True)
-    vehicle_id: Mapped[int] = mapped_column(ForeignKey("vehicles.id"), nullable=False, index=True)
-
-    # locked | researching | unlocked | purchased
-    status: Mapped[str] = mapped_column(default="locked", nullable=False)
-    rp_earned: Mapped[int] = mapped_column(default=0, nullable=False)
-    last_seen_at: Mapped[datetime | None] = mapped_column(nullable=True)
-
-    user = relationship("User")
-    vehicle = relationship("Vehicle")
+    id: Mapped[int] = mapped_column(primary_key=True)
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.id"), index=True)
+    vehicle_id: Mapped[int] = mapped_column(ForeignKey("vehicles.id"), index=True)
+    status: Mapped[str] = mapped_column(String(24), default="locked")
+    rp_earned: Mapped[int] = mapped_column(Integer, default=0)
+    last_seen_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))

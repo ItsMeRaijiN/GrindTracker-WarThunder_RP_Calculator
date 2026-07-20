@@ -1,0 +1,28 @@
+# Python
+backend/.venv*/
+backend/__pycache__/
+backend/.pytest_cache/
+backend/.pytest-tmp*/
+backend/.ruff_cache/
+backend/.pip-audit-cache/
+backend/instance/
+*.py[cod]
+
+# Node / pnpm / Vite
+node_modules/
+frontend/dist/
+.pnpm-store/
+*.tsbuildinfo
+frontend/vite.config.js
+frontend/vite.config.d.ts
+
+# Local configuration
+.env
+*.env
+
+# Editors and OS
+.idea/
+.vscode/
+.claude/settings.local.json
+.DS_Store
+Thumbs.db

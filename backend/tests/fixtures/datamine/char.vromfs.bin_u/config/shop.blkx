@@ -1,0 +1,33 @@
+{
+  "country_usa": {
+    "army": {
+      "range": [
+        {
+          "us_m2a4": {
+            "rank": 1,
+            "unitClass": "exp_tank"
+          },
+          "stuart_folder": {
+            "us_m3_stuart": {
+              "rank": 2,
+              "unitClass": "exp_light_tank",
+              "reqAir": "us_m2a4"
+            },
+            "us_m3a1_stuart": {
+              "rank": 2,
+              "unitClass": "exp_light_tank",
+              "reqAir": "us_m3_stuart"
+            }
+          }
+        },
+        {
+          "us_m901_itv": {
+            "rank": 5,
+            "unitClass": "exp_tank_destroyer",
+            "isClanVehicle": true
+          }
+        }
+      ]
+    }
+  }
+}
