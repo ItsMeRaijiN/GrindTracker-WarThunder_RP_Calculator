@@ -366,7 +366,7 @@ const VehicleCard = memo(function VehicleCard({
           <strong>{vehicle.name}</strong>
         </span>
         <span className="vehicle-meta">
-          <b>BR {battleRating(vehicle) ?? '—'}</b>
+          <b>BR {battleRating(vehicle) ?? '-'}</b>
           <span>
             {reserve
               ? 'Starting vehicle'

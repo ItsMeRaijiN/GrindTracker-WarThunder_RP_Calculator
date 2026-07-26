@@ -76,7 +76,7 @@ vehicle on the route instead of dividing the entire route by one global average.
 Do not paste Vehicle Research RP that has already been applied to the currently selected target into the observed
 field; that number already contains the target's research-efficiency multiplier.
 
-Mechanics reference: [War Thunder Wiki — Basic economy](https://wiki.warthunder.com/mechanics/basic_economy).
+Mechanics reference: [War Thunder Wiki - Basic economy](https://wiki.warthunder.com/mechanics/basic_economy).
 
 ## Important limitations
 

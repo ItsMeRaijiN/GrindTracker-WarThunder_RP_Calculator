@@ -181,7 +181,7 @@ export default function App() {
           <div>
             <div className="eyebrow">War Thunder · research planning</div>
             <h1><em>Plan your next unlock.</em></h1>
-            <p>An interactive research tree, saved progress, and a forecast based on your battles — with vehicle-specific RP multipliers.</p>
+            <p>An interactive research tree, saved progress, and a forecast based on your battles - with vehicle-specific RP multipliers.</p>
           </div>
           <div className="mission-stats" aria-label="Current research tree statistics">
             <div><span>VEHICLES</span><strong>{treeVehicles.length}</strong></div>

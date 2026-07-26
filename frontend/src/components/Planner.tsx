@@ -228,7 +228,7 @@ export function Planner({ selected, tree, getProgress, exportProgress, onSavePro
           <div className="eyebrow">Active target</div>
           <h2>{selected.name}</h2>
           <p>
-            Rank {toRoman(selected.rank)} · BR {battleRating(selected) ?? '—'} ·{' '}
+            Rank {toRoman(selected.rank)} · BR {battleRating(selected) ?? '-'} ·{' '}
             {reserve
               ? 'Reserve · unlocked from start'
               : total > 0
@@ -433,8 +433,8 @@ function ResultPanel({ calculation }: { calculation: Calculation }) {
       <div className="result-heading"><span>FORECAST</span><small>1 GE ≈ 45 RP</small></div>
       <div className="result-grid">
         <ResultStat label="Remaining" value={`${formatRp(remaining)} RP`} />
-        <ResultStat label="Battles" value={result.battles_needed === null ? '—' : formatRp(result.battles_needed)} />
-        <ResultStat label="Time" value={result.hours_needed === null ? '—' : `${result.hours_needed} h`} />
+        <ResultStat label="Battles" value={result.battles_needed === null ? '-' : formatRp(result.battles_needed)} />
+        <ResultStat label="Time" value={result.hours_needed === null ? '-' : `${result.hours_needed} h`} />
         <ResultStat label="Conversion" value={`${formatRp(result.ge_cost_by_rate)} GE`} />
       </div>
       <p>
