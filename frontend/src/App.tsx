@@ -24,6 +24,7 @@ export default function App() {
   const [query, setQuery] = useState('')
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [reloadKey, setReloadKey] = useState(0)
 
   const [user, setUser] = useState<User | null>(null)
   const [authReady, setAuthReady] = useState(!AUTH_ENABLED)
@@ -47,9 +48,12 @@ export default function App() {
 
   useEffect(() => {
     let active = true
+    setLoading(true)
+    setError(null)
     Promise.all([api.nations(), api.classes()])
       .then(([nationRows, classRows]) => {
         if (!active) return
+        if (!nationRows.length || !classRows.length) throw new Error('The vehicle catalog is empty. Please try again later.')
         setNations(nationRows)
         setClasses(classRows)
         setNation((current) => current || nationRows.find((item) => item.slug === 'germany')?.slug || nationRows[0]?.slug || '')
@@ -61,7 +65,7 @@ export default function App() {
         setLoading(false)
       })
     return () => { active = false }
-  }, [])
+  }, [reloadKey])
 
   useEffect(() => {
     if (!nation || !vehicleClass) return
@@ -80,7 +84,7 @@ export default function App() {
       .catch((caught) => active && setError(errorMessage(caught)))
       .finally(() => active && setLoading(false))
     return () => { active = false }
-  }, [nation, vehicleClass])
+  }, [nation, vehicleClass, reloadKey])
 
   useEffect(() => {
     if (!user) return
@@ -205,7 +209,12 @@ export default function App() {
         {progress.syncError && <div className="sync-warning">Progress was saved locally. Sync error: {progress.syncError}</div>}
         {progress.syncNotice && <div className="sync-warning" role="status">{progress.syncNotice}</div>}
         {sessionError && <div className="page-error" role="alert"><strong>Could not sign out.</strong><span>{sessionError}</span></div>}
-        {error && <div className="page-error" role="alert"><strong>Could not load data.</strong><span>{error}</span></div>}
+        {error && (
+          <div className="page-error" role="alert">
+            <strong>Could not load data.</strong><span>{error}</span>
+            <button className="button button-quiet" type="button" onClick={() => setReloadKey((value) => value + 1)}>Retry</button>
+          </div>
+        )}
 
         <div className="workspace">
           <div className="tree-area">

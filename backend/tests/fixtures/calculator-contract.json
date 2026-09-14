@@ -1,0 +1,1517 @@
+{
+  "catalog": {
+    "schema_version": 1,
+    "source": {
+      "source": "calculator-contract",
+      "version": "1",
+      "revision": "contract-v1",
+      "checksum": null,
+      "source_url": null
+    },
+    "nations": [
+      {
+        "id": 1,
+        "slug": "usa",
+        "name": "USA"
+      }
+    ],
+    "classes": [
+      {
+        "id": 1,
+        "name": "army"
+      }
+    ],
+    "nodes": [
+      {
+        "id": 3616368904323,
+        "name": "Folder",
+        "nation": "usa",
+        "class": "army",
+        "rank": 4,
+        "type": "tree",
+        "is_reserve": false,
+        "availability": "researchable",
+        "tree_column": 0,
+        "tree_order": 3,
+        "br": {
+          "ab": null,
+          "rb": null,
+          "sb": null
+        },
+        "rp_multiplier": 1.4,
+        "rp_cost": 2600,
+        "ge_cost": null,
+        "gjn_cost": null,
+        "marketplace_item_id": null,
+        "folder_of": null
+      },
+      {
+        "id": 122010519822030,
+        "name": "High",
+        "nation": "usa",
+        "class": "army",
+        "rank": 7,
+        "type": "tree",
+        "is_reserve": false,
+        "availability": "researchable",
+        "tree_column": 0,
+        "tree_order": 5,
+        "br": {
+          "ab": null,
+          "rb": null,
+          "sb": null
+        },
+        "rp_multiplier": 2.2,
+        "rp_cost": 80000,
+        "ge_cost": null,
+        "gjn_cost": null,
+        "marketplace_item_id": null,
+        "folder_of": null
+      },
+      {
+        "id": 118884436652968,
+        "name": "Low",
+        "nation": "usa",
+        "class": "army",
+        "rank": 1,
+        "type": "tree",
+        "is_reserve": false,
+        "availability": "researchable",
+        "tree_column": 0,
+        "tree_order": 6,
+        "br": {
+          "ab": null,
+          "rb": null,
+          "sb": null
+        },
+        "rp_multiplier": 1.1,
+        "rp_cost": 6000,
+        "ge_cost": null,
+        "gjn_cost": null,
+        "marketplace_item_id": null,
+        "folder_of": null
+      },
+      {
+        "id": 148493163110788,
+        "name": "Premium",
+        "nation": "usa",
+        "class": "army",
+        "rank": 3,
+        "type": "premium",
+        "is_reserve": false,
+        "availability": "premium",
+        "tree_column": 0,
+        "tree_order": 2,
+        "br": {
+          "ab": null,
+          "rb": null,
+          "sb": null
+        },
+        "rp_multiplier": 2.4,
+        "rp_cost": null,
+        "ge_cost": null,
+        "gjn_cost": null,
+        "marketplace_item_id": null,
+        "folder_of": null
+      },
+      {
+        "id": 112670812661671,
+        "name": "Regular",
+        "nation": "usa",
+        "class": "army",
+        "rank": 3,
+        "type": "tree",
+        "is_reserve": false,
+        "availability": "researchable",
+        "tree_column": 0,
+        "tree_order": 1,
+        "br": {
+          "ab": null,
+          "rb": null,
+          "sb": null
+        },
+        "rp_multiplier": 1.7,
+        "rp_cost": 12000,
+        "ge_cost": null,
+        "gjn_cost": null,
+        "marketplace_item_id": null,
+        "folder_of": null
+      },
+      {
+        "id": 120887428197381,
+        "name": "Reserve",
+        "nation": "usa",
+        "class": "army",
+        "rank": 1,
+        "type": "tree",
+        "is_reserve": true,
+        "availability": "researchable",
+        "tree_column": 0,
+        "tree_order": 0,
+        "br": {
+          "ab": null,
+          "rb": null,
+          "sb": null
+        },
+        "rp_multiplier": 1.0,
+        "rp_cost": null,
+        "ge_cost": null,
+        "gjn_cost": null,
+        "marketplace_item_id": null,
+        "folder_of": null
+      },
+      {
+        "id": 57862873529520,
+        "name": "Target",
+        "nation": "usa",
+        "class": "army",
+        "rank": 4,
+        "type": "tree",
+        "is_reserve": false,
+        "availability": "researchable",
+        "tree_column": 0,
+        "tree_order": 4,
+        "br": {
+          "ab": null,
+          "rb": null,
+          "sb": null
+        },
+        "rp_multiplier": 1.4,
+        "rp_cost": 5900,
+        "ge_cost": null,
+        "gjn_cost": null,
+        "marketplace_item_id": null,
+        "folder_of": 3616368904323
+      }
+    ],
+    "edges": [],
+    "trees": [
+      {
+        "nation": "usa",
+        "class": "army",
+        "vehicle_count": 7,
+        "research_column_count": 1,
+        "research_efficiency": {
+          "premium_max_target_rank_offset": 1,
+          "target_above": {
+            "0": 1.0,
+            "1": 1.0,
+            "2": 0.4,
+            "3": 0.3
+          },
+          "target_above_default": 0.2,
+          "target_below": {
+            "1": 0.9,
+            "2": 0.3,
+            "3": 0.1
+          },
+          "target_below_default": 0.05
+        },
+        "source_version": "1",
+        "source_revision": "contract-v1"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "name": "observed predecessor",
+      "kind": "estimate",
+      "payload": {
+        "vehicle_id": 57862873529520,
+        "research_vehicle_id": 112670812661671,
+        "rp_current": 0,
+        "avg_rp_per_battle": 2100.0,
+        "avg_battle_minutes": 9,
+        "recent_battles": [],
+        "rp_is_base": false,
+        "has_premium": false,
+        "booster_percent": 0,
+        "skill_bonus_percent": 0,
+        "has_talisman": false,
+        "game_mode": "rb",
+        "progress": {}
+      },
+      "expected": {
+        "vehicle": {
+          "id": 57862873529520,
+          "name": "Target",
+          "rank": 4,
+          "type": "tree",
+          "rp_cost": 5900,
+          "ge_cost": null,
+          "rp_multiplier": 1.4
+        },
+        "research_vehicle": {
+          "id": 112670812661671,
+          "name": "Regular",
+          "rank": 3,
+          "type": "tree",
+          "rp_cost": 12000,
+          "ge_cost": null,
+          "rp_multiplier": 1.7
+        },
+        "rp_current": 0,
+        "rp_remaining": 5900,
+        "base_from_recent": {
+          "avg_rp_per_battle": 2100.0,
+          "avg_battle_minutes": 9,
+          "samples": 0,
+          "rp_is_base": false
+        },
+        "effective_rp_per_battle": 2100.0,
+        "modifiers": {
+          "vehicle_rp_multiplier": 1.7,
+          "vehicle_rp_multiplier_applied": false,
+          "economy_multiplier": 1.0,
+          "research_efficiency": 1.0,
+          "direct_predecessor_bonus": false
+        },
+        "battles_needed": 3,
+        "minutes_needed": 27,
+        "hours_needed": 0.45,
+        "ge_cost_by_rate": 132,
+        "prerequisite_ids": [
+          3616368904323
+        ],
+        "prerequisites": [
+          {
+            "id": 3616368904323,
+            "name": "Folder"
+          }
+        ]
+      }
+    },
+    {
+      "name": "arcade predecessor",
+      "kind": "estimate",
+      "payload": {
+        "vehicle_id": 57862873529520,
+        "research_vehicle_id": 112670812661671,
+        "rp_current": 0,
+        "avg_rp_per_battle": 2100.0,
+        "avg_battle_minutes": 9,
+        "recent_battles": [],
+        "rp_is_base": false,
+        "has_premium": false,
+        "booster_percent": 0,
+        "skill_bonus_percent": 0,
+        "has_talisman": false,
+        "game_mode": "ab",
+        "progress": {}
+      },
+      "expected": {
+        "vehicle": {
+          "id": 57862873529520,
+          "name": "Target",
+          "rank": 4,
+          "type": "tree",
+          "rp_cost": 5900,
+          "ge_cost": null,
+          "rp_multiplier": 1.4
+        },
+        "research_vehicle": {
+          "id": 112670812661671,
+          "name": "Regular",
+          "rank": 3,
+          "type": "tree",
+          "rp_cost": 12000,
+          "ge_cost": null,
+          "rp_multiplier": 1.7
+        },
+        "rp_current": 0,
+        "rp_remaining": 5900,
+        "base_from_recent": {
+          "avg_rp_per_battle": 2100.0,
+          "avg_battle_minutes": 9,
+          "samples": 0,
+          "rp_is_base": false
+        },
+        "effective_rp_per_battle": 2100.0,
+        "modifiers": {
+          "vehicle_rp_multiplier": 1.7,
+          "vehicle_rp_multiplier_applied": false,
+          "economy_multiplier": 1.0,
+          "research_efficiency": 1.0,
+          "direct_predecessor_bonus": false
+        },
+        "battles_needed": 3,
+        "minutes_needed": 27,
+        "hours_needed": 0.45,
+        "ge_cost_by_rate": 132,
+        "prerequisite_ids": [
+          3616368904323
+        ],
+        "prerequisites": [
+          {
+            "id": 3616368904323,
+            "name": "Folder"
+          }
+        ]
+      }
+    },
+    {
+      "name": "simulator predecessor",
+      "kind": "estimate",
+      "payload": {
+        "vehicle_id": 57862873529520,
+        "research_vehicle_id": 112670812661671,
+        "rp_current": 0,
+        "avg_rp_per_battle": 2100.0,
+        "avg_battle_minutes": 9,
+        "recent_battles": [],
+        "rp_is_base": false,
+        "has_premium": false,
+        "booster_percent": 0,
+        "skill_bonus_percent": 0,
+        "has_talisman": false,
+        "game_mode": "sb",
+        "progress": {}
+      },
+      "expected": {
+        "vehicle": {
+          "id": 57862873529520,
+          "name": "Target",
+          "rank": 4,
+          "type": "tree",
+          "rp_cost": 5900,
+          "ge_cost": null,
+          "rp_multiplier": 1.4
+        },
+        "research_vehicle": {
+          "id": 112670812661671,
+          "name": "Regular",
+          "rank": 3,
+          "type": "tree",
+          "rp_cost": 12000,
+          "ge_cost": null,
+          "rp_multiplier": 1.7
+        },
+        "rp_current": 0,
+        "rp_remaining": 5900,
+        "base_from_recent": {
+          "avg_rp_per_battle": 2100.0,
+          "avg_battle_minutes": 9,
+          "samples": 0,
+          "rp_is_base": false
+        },
+        "effective_rp_per_battle": 2100.0,
+        "modifiers": {
+          "vehicle_rp_multiplier": 1.7,
+          "vehicle_rp_multiplier_applied": false,
+          "economy_multiplier": 1.0,
+          "research_efficiency": 1.0,
+          "direct_predecessor_bonus": false
+        },
+        "battles_needed": 3,
+        "minutes_needed": 27,
+        "hours_needed": 0.45,
+        "ge_cost_by_rate": 132,
+        "prerequisite_ids": [
+          3616368904323
+        ],
+        "prerequisites": [
+          {
+            "id": 3616368904323,
+            "name": "Folder"
+          }
+        ]
+      }
+    },
+    {
+      "name": "additive base bonuses",
+      "kind": "estimate",
+      "payload": {
+        "vehicle_id": 57862873529520,
+        "research_vehicle_id": 112670812661671,
+        "rp_current": 0,
+        "avg_rp_per_battle": 1234.0,
+        "avg_battle_minutes": 9,
+        "recent_battles": [],
+        "rp_is_base": true,
+        "has_premium": true,
+        "booster_percent": 150,
+        "skill_bonus_percent": 75,
+        "has_talisman": true,
+        "game_mode": "rb",
+        "progress": {}
+      },
+      "expected": {
+        "vehicle": {
+          "id": 57862873529520,
+          "name": "Target",
+          "rank": 4,
+          "type": "tree",
+          "rp_cost": 5900,
+          "ge_cost": null,
+          "rp_multiplier": 1.4
+        },
+        "research_vehicle": {
+          "id": 112670812661671,
+          "name": "Regular",
+          "rank": 3,
+          "type": "tree",
+          "rp_cost": 12000,
+          "ge_cost": null,
+          "rp_multiplier": 1.7
+        },
+        "rp_current": 0,
+        "rp_remaining": 5900,
+        "base_from_recent": {
+          "avg_rp_per_battle": 1234.0,
+          "avg_battle_minutes": 9,
+          "samples": 0,
+          "rp_is_base": true
+        },
+        "effective_rp_per_battle": 11013.45,
+        "modifiers": {
+          "vehicle_rp_multiplier": 1.7,
+          "vehicle_rp_multiplier_applied": true,
+          "economy_multiplier": 5.25,
+          "research_efficiency": 1.0,
+          "direct_predecessor_bonus": false
+        },
+        "battles_needed": 1,
+        "minutes_needed": 9,
+        "hours_needed": 0.15,
+        "ge_cost_by_rate": 132,
+        "prerequisite_ids": [
+          3616368904323
+        ],
+        "prerequisites": [
+          {
+            "id": 3616368904323,
+            "name": "Folder"
+          }
+        ]
+      }
+    },
+    {
+      "name": "observed bonuses not applied twice",
+      "kind": "estimate",
+      "payload": {
+        "vehicle_id": 122010519822030,
+        "research_vehicle_id": 148493163110788,
+        "rp_current": 0,
+        "avg_rp_per_battle": 2000.0,
+        "avg_battle_minutes": 9,
+        "recent_battles": [],
+        "rp_is_base": false,
+        "has_premium": true,
+        "booster_percent": 100,
+        "skill_bonus_percent": 0,
+        "has_talisman": false,
+        "game_mode": "rb",
+        "progress": {}
+      },
+      "expected": {
+        "vehicle": {
+          "id": 122010519822030,
+          "name": "High",
+          "rank": 7,
+          "type": "tree",
+          "rp_cost": 80000,
+          "ge_cost": null,
+          "rp_multiplier": 2.2
+        },
+        "research_vehicle": {
+          "id": 148493163110788,
+          "name": "Premium",
+          "rank": 3,
+          "type": "premium",
+          "rp_cost": null,
+          "ge_cost": null,
+          "rp_multiplier": 2.4
+        },
+        "rp_current": 0,
+        "rp_remaining": 80000,
+        "base_from_recent": {
+          "avg_rp_per_battle": 2000.0,
+          "avg_battle_minutes": 9,
+          "samples": 0,
+          "rp_is_base": false
+        },
+        "effective_rp_per_battle": 400.0,
+        "modifiers": {
+          "vehicle_rp_multiplier": 2.4,
+          "vehicle_rp_multiplier_applied": false,
+          "economy_multiplier": 3.0,
+          "research_efficiency": 0.2,
+          "direct_predecessor_bonus": false
+        },
+        "battles_needed": 200,
+        "minutes_needed": 1800,
+        "hours_needed": 30.0,
+        "ge_cost_by_rate": 1778,
+        "prerequisite_ids": [],
+        "prerequisites": []
+      }
+    },
+    {
+      "name": "premium lower rank",
+      "kind": "estimate",
+      "payload": {
+        "vehicle_id": 118884436652968,
+        "research_vehicle_id": 148493163110788,
+        "rp_current": 0,
+        "avg_rp_per_battle": 2500.0,
+        "avg_battle_minutes": 9,
+        "recent_battles": [],
+        "rp_is_base": false,
+        "has_premium": false,
+        "booster_percent": 0,
+        "skill_bonus_percent": 0,
+        "has_talisman": false,
+        "game_mode": "rb",
+        "progress": {}
+      },
+      "expected": {
+        "vehicle": {
+          "id": 118884436652968,
+          "name": "Low",
+          "rank": 1,
+          "type": "tree",
+          "rp_cost": 6000,
+          "ge_cost": null,
+          "rp_multiplier": 1.1
+        },
+        "research_vehicle": {
+          "id": 148493163110788,
+          "name": "Premium",
+          "rank": 3,
+          "type": "premium",
+          "rp_cost": null,
+          "ge_cost": null,
+          "rp_multiplier": 2.4
+        },
+        "rp_current": 0,
+        "rp_remaining": 6000,
+        "base_from_recent": {
+          "avg_rp_per_battle": 2500.0,
+          "avg_battle_minutes": 9,
+          "samples": 0,
+          "rp_is_base": false
+        },
+        "effective_rp_per_battle": 2500.0,
+        "modifiers": {
+          "vehicle_rp_multiplier": 2.4,
+          "vehicle_rp_multiplier_applied": false,
+          "economy_multiplier": 1.0,
+          "research_efficiency": 1.0,
+          "direct_predecessor_bonus": false
+        },
+        "battles_needed": 3,
+        "minutes_needed": 27,
+        "hours_needed": 0.45,
+        "ge_cost_by_rate": 134,
+        "prerequisite_ids": [],
+        "prerequisites": []
+      }
+    },
+    {
+      "name": "premium upper efficient rank",
+      "kind": "estimate",
+      "payload": {
+        "vehicle_id": 57862873529520,
+        "research_vehicle_id": 148493163110788,
+        "rp_current": 0,
+        "avg_rp_per_battle": 2500.0,
+        "avg_battle_minutes": 9,
+        "recent_battles": [],
+        "rp_is_base": false,
+        "has_premium": false,
+        "booster_percent": 0,
+        "skill_bonus_percent": 0,
+        "has_talisman": false,
+        "game_mode": "rb",
+        "progress": {}
+      },
+      "expected": {
+        "vehicle": {
+          "id": 57862873529520,
+          "name": "Target",
+          "rank": 4,
+          "type": "tree",
+          "rp_cost": 5900,
+          "ge_cost": null,
+          "rp_multiplier": 1.4
+        },
+        "research_vehicle": {
+          "id": 148493163110788,
+          "name": "Premium",
+          "rank": 3,
+          "type": "premium",
+          "rp_cost": null,
+          "ge_cost": null,
+          "rp_multiplier": 2.4
+        },
+        "rp_current": 0,
+        "rp_remaining": 5900,
+        "base_from_recent": {
+          "avg_rp_per_battle": 2500.0,
+          "avg_battle_minutes": 9,
+          "samples": 0,
+          "rp_is_base": false
+        },
+        "effective_rp_per_battle": 2500.0,
+        "modifiers": {
+          "vehicle_rp_multiplier": 2.4,
+          "vehicle_rp_multiplier_applied": false,
+          "economy_multiplier": 1.0,
+          "research_efficiency": 1.0,
+          "direct_predecessor_bonus": false
+        },
+        "battles_needed": 3,
+        "minutes_needed": 27,
+        "hours_needed": 0.45,
+        "ge_cost_by_rate": 132,
+        "prerequisite_ids": [
+          3616368904323
+        ],
+        "prerequisites": [
+          {
+            "id": 3616368904323,
+            "name": "Folder"
+          }
+        ]
+      }
+    },
+    {
+      "name": "regular lower rank",
+      "kind": "estimate",
+      "payload": {
+        "vehicle_id": 118884436652968,
+        "research_vehicle_id": 112670812661671,
+        "rp_current": 0,
+        "avg_rp_per_battle": 2500.0,
+        "avg_battle_minutes": 9,
+        "recent_battles": [],
+        "rp_is_base": false,
+        "has_premium": false,
+        "booster_percent": 0,
+        "skill_bonus_percent": 0,
+        "has_talisman": false,
+        "game_mode": "rb",
+        "progress": {}
+      },
+      "expected": {
+        "vehicle": {
+          "id": 118884436652968,
+          "name": "Low",
+          "rank": 1,
+          "type": "tree",
+          "rp_cost": 6000,
+          "ge_cost": null,
+          "rp_multiplier": 1.1
+        },
+        "research_vehicle": {
+          "id": 112670812661671,
+          "name": "Regular",
+          "rank": 3,
+          "type": "tree",
+          "rp_cost": 12000,
+          "ge_cost": null,
+          "rp_multiplier": 1.7
+        },
+        "rp_current": 0,
+        "rp_remaining": 6000,
+        "base_from_recent": {
+          "avg_rp_per_battle": 2500.0,
+          "avg_battle_minutes": 9,
+          "samples": 0,
+          "rp_is_base": false
+        },
+        "effective_rp_per_battle": 750.0,
+        "modifiers": {
+          "vehicle_rp_multiplier": 1.7,
+          "vehicle_rp_multiplier_applied": false,
+          "economy_multiplier": 1.0,
+          "research_efficiency": 0.3,
+          "direct_predecessor_bonus": false
+        },
+        "battles_needed": 8,
+        "minutes_needed": 72,
+        "hours_needed": 1.2,
+        "ge_cost_by_rate": 134,
+        "prerequisite_ids": [],
+        "prerequisites": []
+      }
+    },
+    {
+      "name": "regular far higher rank",
+      "kind": "estimate",
+      "payload": {
+        "vehicle_id": 122010519822030,
+        "research_vehicle_id": 112670812661671,
+        "rp_current": 0,
+        "avg_rp_per_battle": 2500.0,
+        "avg_battle_minutes": 9,
+        "recent_battles": [],
+        "rp_is_base": false,
+        "has_premium": false,
+        "booster_percent": 0,
+        "skill_bonus_percent": 0,
+        "has_talisman": false,
+        "game_mode": "rb",
+        "progress": {}
+      },
+      "expected": {
+        "vehicle": {
+          "id": 122010519822030,
+          "name": "High",
+          "rank": 7,
+          "type": "tree",
+          "rp_cost": 80000,
+          "ge_cost": null,
+          "rp_multiplier": 2.2
+        },
+        "research_vehicle": {
+          "id": 112670812661671,
+          "name": "Regular",
+          "rank": 3,
+          "type": "tree",
+          "rp_cost": 12000,
+          "ge_cost": null,
+          "rp_multiplier": 1.7
+        },
+        "rp_current": 0,
+        "rp_remaining": 80000,
+        "base_from_recent": {
+          "avg_rp_per_battle": 2500.0,
+          "avg_battle_minutes": 9,
+          "samples": 0,
+          "rp_is_base": false
+        },
+        "effective_rp_per_battle": 500.0,
+        "modifiers": {
+          "vehicle_rp_multiplier": 1.7,
+          "vehicle_rp_multiplier_applied": false,
+          "economy_multiplier": 1.0,
+          "research_efficiency": 0.2,
+          "direct_predecessor_bonus": false
+        },
+        "battles_needed": 160,
+        "minutes_needed": 1440,
+        "hours_needed": 24.0,
+        "ge_cost_by_rate": 1778,
+        "prerequisite_ids": [],
+        "prerequisites": []
+      }
+    },
+    {
+      "name": "recent battle average",
+      "kind": "estimate",
+      "payload": {
+        "vehicle_id": 57862873529520,
+        "research_vehicle_id": 112670812661671,
+        "rp_current": 0,
+        "avg_rp_per_battle": 9999.0,
+        "avg_battle_minutes": 99.0,
+        "recent_battles": [
+          {
+            "rp": 2000.0,
+            "minutes": 7.5
+          },
+          {
+            "rp": 1750.0,
+            "minutes": 0.0
+          },
+          {
+            "rp": 0.0,
+            "minutes": 12.0
+          }
+        ],
+        "rp_is_base": false,
+        "has_premium": false,
+        "booster_percent": 0,
+        "skill_bonus_percent": 0,
+        "has_talisman": false,
+        "game_mode": "rb",
+        "progress": {}
+      },
+      "expected": {
+        "vehicle": {
+          "id": 57862873529520,
+          "name": "Target",
+          "rank": 4,
+          "type": "tree",
+          "rp_cost": 5900,
+          "ge_cost": null,
+          "rp_multiplier": 1.4
+        },
+        "research_vehicle": {
+          "id": 112670812661671,
+          "name": "Regular",
+          "rank": 3,
+          "type": "tree",
+          "rp_cost": 12000,
+          "ge_cost": null,
+          "rp_multiplier": 1.7
+        },
+        "rp_current": 0,
+        "rp_remaining": 5900,
+        "base_from_recent": {
+          "avg_rp_per_battle": 1875.0,
+          "avg_battle_minutes": 7.5,
+          "samples": 2,
+          "rp_is_base": false
+        },
+        "effective_rp_per_battle": 1875.0,
+        "modifiers": {
+          "vehicle_rp_multiplier": 1.7,
+          "vehicle_rp_multiplier_applied": false,
+          "economy_multiplier": 1.0,
+          "research_efficiency": 1.0,
+          "direct_predecessor_bonus": false
+        },
+        "battles_needed": 4,
+        "minutes_needed": 30,
+        "hours_needed": 0.5,
+        "ge_cost_by_rate": 132,
+        "prerequisite_ids": [
+          3616368904323
+        ],
+        "prerequisites": [
+          {
+            "id": 3616368904323,
+            "name": "Folder"
+          }
+        ]
+      }
+    },
+    {
+      "name": "unknown pace",
+      "kind": "estimate",
+      "payload": {
+        "vehicle_id": 57862873529520,
+        "rp_current": 0,
+        "avg_rp_per_battle": 0,
+        "avg_battle_minutes": 9,
+        "recent_battles": [],
+        "rp_is_base": false,
+        "has_premium": false,
+        "booster_percent": 0,
+        "skill_bonus_percent": 0,
+        "has_talisman": false,
+        "game_mode": "rb",
+        "progress": {}
+      },
+      "expected": {
+        "vehicle": {
+          "id": 57862873529520,
+          "name": "Target",
+          "rank": 4,
+          "type": "tree",
+          "rp_cost": 5900,
+          "ge_cost": null,
+          "rp_multiplier": 1.4
+        },
+        "research_vehicle": null,
+        "rp_current": 0,
+        "rp_remaining": 5900,
+        "base_from_recent": {
+          "avg_rp_per_battle": 0,
+          "avg_battle_minutes": 9,
+          "samples": 0,
+          "rp_is_base": false
+        },
+        "effective_rp_per_battle": 0.0,
+        "modifiers": {
+          "vehicle_rp_multiplier": 1.0,
+          "vehicle_rp_multiplier_applied": false,
+          "economy_multiplier": 1.0,
+          "research_efficiency": 1.0,
+          "direct_predecessor_bonus": false
+        },
+        "battles_needed": null,
+        "minutes_needed": null,
+        "hours_needed": null,
+        "ge_cost_by_rate": 132,
+        "prerequisite_ids": [
+          3616368904323
+        ],
+        "prerequisites": [
+          {
+            "id": 3616368904323,
+            "name": "Folder"
+          }
+        ]
+      }
+    },
+    {
+      "name": "completed target",
+      "kind": "estimate",
+      "payload": {
+        "vehicle_id": 57862873529520,
+        "rp_current": 9000,
+        "avg_rp_per_battle": 0,
+        "avg_battle_minutes": 9,
+        "recent_battles": [],
+        "rp_is_base": false,
+        "has_premium": false,
+        "booster_percent": 0,
+        "skill_bonus_percent": 0,
+        "has_talisman": false,
+        "game_mode": "rb",
+        "progress": {}
+      },
+      "expected": {
+        "vehicle": {
+          "id": 57862873529520,
+          "name": "Target",
+          "rank": 4,
+          "type": "tree",
+          "rp_cost": 5900,
+          "ge_cost": null,
+          "rp_multiplier": 1.4
+        },
+        "research_vehicle": null,
+        "rp_current": 5900,
+        "rp_remaining": 0,
+        "base_from_recent": {
+          "avg_rp_per_battle": 0,
+          "avg_battle_minutes": 9,
+          "samples": 0,
+          "rp_is_base": false
+        },
+        "effective_rp_per_battle": 0.0,
+        "modifiers": {
+          "vehicle_rp_multiplier": 1.0,
+          "vehicle_rp_multiplier_applied": false,
+          "economy_multiplier": 1.0,
+          "research_efficiency": 1.0,
+          "direct_predecessor_bonus": false
+        },
+        "battles_needed": 0,
+        "minutes_needed": 0,
+        "hours_needed": 0.0,
+        "ge_cost_by_rate": 0,
+        "prerequisite_ids": [
+          3616368904323
+        ],
+        "prerequisites": [
+          {
+            "id": 3616368904323,
+            "name": "Folder"
+          }
+        ]
+      }
+    },
+    {
+      "name": "half-minute rounding",
+      "kind": "estimate",
+      "payload": {
+        "vehicle_id": 57862873529520,
+        "rp_current": 0,
+        "avg_rp_per_battle": 10000.0,
+        "avg_battle_minutes": 2.5,
+        "recent_battles": [],
+        "rp_is_base": false,
+        "has_premium": false,
+        "booster_percent": 0,
+        "skill_bonus_percent": 0,
+        "has_talisman": false,
+        "game_mode": "rb",
+        "progress": {}
+      },
+      "expected": {
+        "vehicle": {
+          "id": 57862873529520,
+          "name": "Target",
+          "rank": 4,
+          "type": "tree",
+          "rp_cost": 5900,
+          "ge_cost": null,
+          "rp_multiplier": 1.4
+        },
+        "research_vehicle": null,
+        "rp_current": 0,
+        "rp_remaining": 5900,
+        "base_from_recent": {
+          "avg_rp_per_battle": 10000.0,
+          "avg_battle_minutes": 2.5,
+          "samples": 0,
+          "rp_is_base": false
+        },
+        "effective_rp_per_battle": 10000.0,
+        "modifiers": {
+          "vehicle_rp_multiplier": 1.0,
+          "vehicle_rp_multiplier_applied": false,
+          "economy_multiplier": 1.0,
+          "research_efficiency": 1.0,
+          "direct_predecessor_bonus": false
+        },
+        "battles_needed": 1,
+        "minutes_needed": 2,
+        "hours_needed": 0.03,
+        "ge_cost_by_rate": 132,
+        "prerequisite_ids": [
+          3616368904323
+        ],
+        "prerequisites": [
+          {
+            "id": 3616368904323,
+            "name": "Folder"
+          }
+        ]
+      }
+    },
+    {
+      "name": "fractional RP rounding",
+      "kind": "estimate",
+      "payload": {
+        "vehicle_id": 57862873529520,
+        "rp_current": 0,
+        "avg_rp_per_battle": 2.675,
+        "avg_battle_minutes": 9,
+        "recent_battles": [],
+        "rp_is_base": false,
+        "has_premium": false,
+        "booster_percent": 0,
+        "skill_bonus_percent": 0,
+        "has_talisman": false,
+        "game_mode": "rb",
+        "progress": {}
+      },
+      "expected": {
+        "vehicle": {
+          "id": 57862873529520,
+          "name": "Target",
+          "rank": 4,
+          "type": "tree",
+          "rp_cost": 5900,
+          "ge_cost": null,
+          "rp_multiplier": 1.4
+        },
+        "research_vehicle": null,
+        "rp_current": 0,
+        "rp_remaining": 5900,
+        "base_from_recent": {
+          "avg_rp_per_battle": 2.67,
+          "avg_battle_minutes": 9,
+          "samples": 0,
+          "rp_is_base": false
+        },
+        "effective_rp_per_battle": 2.67,
+        "modifiers": {
+          "vehicle_rp_multiplier": 1.0,
+          "vehicle_rp_multiplier_applied": false,
+          "economy_multiplier": 1.0,
+          "research_efficiency": 1.0,
+          "direct_predecessor_bonus": false
+        },
+        "battles_needed": 2206,
+        "minutes_needed": 19854,
+        "hours_needed": 330.9,
+        "ge_cost_by_rate": 132,
+        "prerequisite_ids": [
+          3616368904323
+        ],
+        "prerequisites": [
+          {
+            "id": 3616368904323,
+            "name": "Folder"
+          }
+        ]
+      }
+    },
+    {
+      "name": "decimal tie to even",
+      "kind": "estimate",
+      "payload": {
+        "vehicle_id": 57862873529520,
+        "rp_current": 0,
+        "avg_rp_per_battle": 1.125,
+        "avg_battle_minutes": 9,
+        "recent_battles": [],
+        "rp_is_base": false,
+        "has_premium": false,
+        "booster_percent": 0,
+        "skill_bonus_percent": 0,
+        "has_talisman": false,
+        "game_mode": "rb",
+        "progress": {}
+      },
+      "expected": {
+        "vehicle": {
+          "id": 57862873529520,
+          "name": "Target",
+          "rank": 4,
+          "type": "tree",
+          "rp_cost": 5900,
+          "ge_cost": null,
+          "rp_multiplier": 1.4
+        },
+        "research_vehicle": null,
+        "rp_current": 0,
+        "rp_remaining": 5900,
+        "base_from_recent": {
+          "avg_rp_per_battle": 1.12,
+          "avg_battle_minutes": 9,
+          "samples": 0,
+          "rp_is_base": false
+        },
+        "effective_rp_per_battle": 1.12,
+        "modifiers": {
+          "vehicle_rp_multiplier": 1.0,
+          "vehicle_rp_multiplier_applied": false,
+          "economy_multiplier": 1.0,
+          "research_efficiency": 1.0,
+          "direct_predecessor_bonus": false
+        },
+        "battles_needed": 5245,
+        "minutes_needed": 47205,
+        "hours_needed": 786.75,
+        "ge_cost_by_rate": 132,
+        "prerequisite_ids": [
+          3616368904323
+        ],
+        "prerequisites": [
+          {
+            "id": 3616368904323,
+            "name": "Folder"
+          }
+        ]
+      }
+    },
+    {
+      "name": "shared and folder prerequisites",
+      "kind": "cascade",
+      "payload": {
+        "vehicle_id": 122010519822030,
+        "research_vehicle_id": 112670812661671,
+        "rp_current": 0,
+        "avg_rp_per_battle": 2100.0,
+        "avg_battle_minutes": 9,
+        "recent_battles": [],
+        "rp_is_base": false,
+        "has_premium": false,
+        "booster_percent": 0,
+        "skill_bonus_percent": 0,
+        "has_talisman": false,
+        "game_mode": "rb",
+        "progress": {}
+      },
+      "expected": {
+        "target": {
+          "id": 122010519822030,
+          "name": "High"
+        },
+        "research_vehicle": {
+          "id": 112670812661671,
+          "name": "Regular",
+          "rank": 3,
+          "type": "tree",
+          "rp_cost": 12000,
+          "ge_cost": null,
+          "rp_multiplier": 1.7
+        },
+        "base_from_recent": {
+          "avg_rp_per_battle": 2100.0,
+          "avg_battle_minutes": 9,
+          "samples": 0,
+          "rp_is_base": false
+        },
+        "effective_rp_per_battle": 420.0,
+        "modifiers": {
+          "vehicle_rp_multiplier": 1.7,
+          "vehicle_rp_multiplier_applied": false,
+          "economy_multiplier": 1.0,
+          "research_efficiency": 0.2,
+          "direct_predecessor_bonus": false
+        },
+        "required_ids": [
+          122010519822030
+        ],
+        "breakdown": [
+          {
+            "id": 122010519822030,
+            "name": "High",
+            "rank": 7,
+            "rp_cost": 80000,
+            "rp_current": 0,
+            "rp_remaining": 80000,
+            "done": false,
+            "effective_rp_per_battle": 420.0,
+            "research_efficiency": 0.2,
+            "direct_predecessor_bonus": false
+          }
+        ],
+        "rp_total_remaining": 80000,
+        "battles_needed": 191,
+        "minutes_needed": 1719,
+        "hours_needed": 28.65,
+        "ge_cost_by_rate": 1778
+      }
+    },
+    {
+      "name": "cascade unknown pace",
+      "kind": "cascade",
+      "payload": {
+        "vehicle_id": 122010519822030,
+        "research_vehicle_id": 112670812661671,
+        "rp_current": 0,
+        "avg_rp_per_battle": 0,
+        "avg_battle_minutes": 9,
+        "recent_battles": [],
+        "rp_is_base": false,
+        "has_premium": false,
+        "booster_percent": 0,
+        "skill_bonus_percent": 0,
+        "has_talisman": false,
+        "game_mode": "rb",
+        "progress": {}
+      },
+      "expected": {
+        "target": {
+          "id": 122010519822030,
+          "name": "High"
+        },
+        "research_vehicle": {
+          "id": 112670812661671,
+          "name": "Regular",
+          "rank": 3,
+          "type": "tree",
+          "rp_cost": 12000,
+          "ge_cost": null,
+          "rp_multiplier": 1.7
+        },
+        "base_from_recent": {
+          "avg_rp_per_battle": 0,
+          "avg_battle_minutes": 9,
+          "samples": 0,
+          "rp_is_base": false
+        },
+        "effective_rp_per_battle": 0.0,
+        "modifiers": {
+          "vehicle_rp_multiplier": 1.7,
+          "vehicle_rp_multiplier_applied": false,
+          "economy_multiplier": 1.0,
+          "research_efficiency": 0.2,
+          "direct_predecessor_bonus": false
+        },
+        "required_ids": [
+          122010519822030
+        ],
+        "breakdown": [
+          {
+            "id": 122010519822030,
+            "name": "High",
+            "rank": 7,
+            "rp_cost": 80000,
+            "rp_current": 0,
+            "rp_remaining": 80000,
+            "done": false,
+            "effective_rp_per_battle": 0.0,
+            "research_efficiency": 0.2,
+            "direct_predecessor_bonus": false
+          }
+        ],
+        "rp_total_remaining": 80000,
+        "battles_needed": null,
+        "minutes_needed": null,
+        "hours_needed": null,
+        "ge_cost_by_rate": 1778
+      }
+    },
+    {
+      "name": "cascade manual target progress",
+      "kind": "cascade",
+      "payload": {
+        "vehicle_id": 57862873529520,
+        "research_vehicle_id": 112670812661671,
+        "rp_current": 4000,
+        "avg_rp_per_battle": 2000.0,
+        "avg_battle_minutes": 9,
+        "recent_battles": [],
+        "rp_is_base": false,
+        "has_premium": false,
+        "booster_percent": 0,
+        "skill_bonus_percent": 0,
+        "has_talisman": false,
+        "game_mode": "rb",
+        "progress": {
+          "112670812661671": {
+            "rp_current": 12000,
+            "done": true
+          }
+        }
+      },
+      "expected": {
+        "target": {
+          "id": 57862873529520,
+          "name": "Target"
+        },
+        "research_vehicle": {
+          "id": 112670812661671,
+          "name": "Regular",
+          "rank": 3,
+          "type": "tree",
+          "rp_cost": 12000,
+          "ge_cost": null,
+          "rp_multiplier": 1.7
+        },
+        "base_from_recent": {
+          "avg_rp_per_battle": 2000.0,
+          "avg_battle_minutes": 9,
+          "samples": 0,
+          "rp_is_base": false
+        },
+        "effective_rp_per_battle": 2000.0,
+        "modifiers": {
+          "vehicle_rp_multiplier": 1.7,
+          "vehicle_rp_multiplier_applied": false,
+          "economy_multiplier": 1.0,
+          "research_efficiency": 1.0,
+          "direct_predecessor_bonus": false
+        },
+        "required_ids": [
+          3616368904323,
+          57862873529520
+        ],
+        "breakdown": [
+          {
+            "id": 3616368904323,
+            "name": "Folder",
+            "rank": 4,
+            "rp_cost": 2600,
+            "rp_current": 0,
+            "rp_remaining": 2600,
+            "done": false,
+            "effective_rp_per_battle": 2000.0,
+            "research_efficiency": 1.0,
+            "direct_predecessor_bonus": false
+          },
+          {
+            "id": 57862873529520,
+            "name": "Target",
+            "rank": 4,
+            "rp_cost": 5900,
+            "rp_current": 4000,
+            "rp_remaining": 1900,
+            "done": false,
+            "effective_rp_per_battle": 2000.0,
+            "research_efficiency": 1.0,
+            "direct_predecessor_bonus": false
+          }
+        ],
+        "rp_total_remaining": 4500,
+        "battles_needed": 3,
+        "minutes_needed": 27,
+        "hours_needed": 0.45,
+        "ge_cost_by_rate": 100
+      }
+    },
+    {
+      "name": "cascade explicitly completed route",
+      "kind": "cascade",
+      "payload": {
+        "vehicle_id": 57862873529520,
+        "research_vehicle_id": 112670812661671,
+        "rp_current": 0,
+        "avg_rp_per_battle": 0,
+        "avg_battle_minutes": 9,
+        "recent_battles": [],
+        "rp_is_base": false,
+        "has_premium": false,
+        "booster_percent": 0,
+        "skill_bonus_percent": 0,
+        "has_talisman": false,
+        "game_mode": "rb",
+        "progress": {
+          "120887428197381": {
+            "rp_current": 0,
+            "done": true
+          },
+          "112670812661671": {
+            "rp_current": 0,
+            "done": true
+          },
+          "148493163110788": {
+            "rp_current": 0,
+            "done": true
+          },
+          "3616368904323": {
+            "rp_current": 0,
+            "done": true
+          },
+          "57862873529520": {
+            "rp_current": 0,
+            "done": true
+          },
+          "122010519822030": {
+            "rp_current": 0,
+            "done": true
+          },
+          "118884436652968": {
+            "rp_current": 0,
+            "done": true
+          }
+        }
+      },
+      "expected": {
+        "target": {
+          "id": 57862873529520,
+          "name": "Target"
+        },
+        "research_vehicle": {
+          "id": 112670812661671,
+          "name": "Regular",
+          "rank": 3,
+          "type": "tree",
+          "rp_cost": 12000,
+          "ge_cost": null,
+          "rp_multiplier": 1.7
+        },
+        "base_from_recent": {
+          "avg_rp_per_battle": 0,
+          "avg_battle_minutes": 9,
+          "samples": 0,
+          "rp_is_base": false
+        },
+        "effective_rp_per_battle": 0.0,
+        "modifiers": {
+          "vehicle_rp_multiplier": 1.7,
+          "vehicle_rp_multiplier_applied": false,
+          "economy_multiplier": 1.0,
+          "research_efficiency": 1.0,
+          "direct_predecessor_bonus": false
+        },
+        "required_ids": [
+          3616368904323,
+          57862873529520
+        ],
+        "breakdown": [
+          {
+            "id": 3616368904323,
+            "name": "Folder",
+            "rank": 4,
+            "rp_cost": 2600,
+            "rp_current": 0,
+            "rp_remaining": 0,
+            "done": true,
+            "effective_rp_per_battle": 0.0,
+            "research_efficiency": 1.0,
+            "direct_predecessor_bonus": false
+          },
+          {
+            "id": 57862873529520,
+            "name": "Target",
+            "rank": 4,
+            "rp_cost": 5900,
+            "rp_current": 0,
+            "rp_remaining": 0,
+            "done": true,
+            "effective_rp_per_battle": 0.0,
+            "research_efficiency": 1.0,
+            "direct_predecessor_bonus": false
+          }
+        ],
+        "rp_total_remaining": 0,
+        "battles_needed": 0,
+        "minutes_needed": 0,
+        "hours_needed": 0.0,
+        "ge_cost_by_rate": 0
+      }
+    }
+  ]
+}

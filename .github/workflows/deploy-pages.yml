@@ -35,14 +35,13 @@ jobs:
       - name: Build
         working-directory: frontend
         env:
-          VITE_API_BASE_URL: ${{ vars.API_BASE_URL }}
-          VITE_AUTH_ENABLED: 'false'
           GITHUB_PAGES: 'true'
         run: |
           pnpm install --frozen-lockfile
           pnpm audit --prod --audit-level=high
           pnpm test
-          pnpm run build
+          pnpm run build:pages
+      - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
           path: frontend/dist

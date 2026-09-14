@@ -1,4 +1,5 @@
 import type { User } from '../types'
+import { STATIC_DATA } from '../api'
 
 type Props = {
   authEnabled: boolean
@@ -23,10 +24,10 @@ export function TopBar({ authEnabled, user, authReady, online, authOpen, onToggl
 
       <div className="topbar-actions">
         <span className={`api-status ${online ? '' : 'is-offline'}`}>
-          <i aria-hidden="true" /> API {online ? 'online' : 'offline'}
+          <i aria-hidden="true" /> {STATIC_DATA ? (online ? 'Ready to plan' : 'Catalog unavailable') : ('API ' + (online ? 'online' : 'offline'))}
         </span>
         {!authEnabled ? (
-          <span className="local-mode" title="Account synchronization is disabled on this static deployment.">Local progress</span>
+          <span className="local-mode" title="Your progress is saved in this browser on this device.">Local progress</span>
         ) : user ? (
           <div className="user-actions">
             <span className="user-badge" title={user.email}>{user.email.slice(0, 1).toUpperCase()}</span>

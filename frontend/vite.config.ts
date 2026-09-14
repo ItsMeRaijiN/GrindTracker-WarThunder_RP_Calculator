@@ -1,15 +1,20 @@
 import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
+import { existsSync } from 'node:fs'
 
 export default defineConfig(({ mode, command }) => {
   const env = loadEnv(mode, process.cwd(), 'VITE_')
-  const configuredApiBase = (env.VITE_API_BASE_URL || '').replace(/\/+$/, '')
+  const isStatic = env.VITE_DATA_MODE === 'static'
+  const configuredApiBase = isStatic ? '' : (env.VITE_API_BASE_URL || '').replace(/\/+$/, '')
   const apiBase = configuredApiBase || 'http://127.0.0.1:8000'
-  const isPages = process.env.GITHUB_PAGES === 'true'
-  const repo = process.env.GITHUB_REPOSITORY?.split('/')[1] ?? ''
-  const base = isPages && mode === 'production' ? `/${repo}/` : '/'
-  const authEnabled = env.VITE_AUTH_ENABLED !== 'false'
-  if (isPages && mode === 'production') {
+  const isPages = process.env.GITHUB_PAGES === 'true' || mode === 'pages'
+  const repo = process.env.GITHUB_REPOSITORY?.split('/')[1] || 'GrindTracker-WarThunder_RP_Calculator'
+  const base = isPages ? `/${repo}/` : '/'
+  const authEnabled = !isStatic && env.VITE_AUTH_ENABLED !== 'false'
+  if (isStatic && command === 'build' && !existsSync('public/data/catalog.json')) {
+    throw new Error('Static builds require public/data/catalog.json. See the catalog export instructions in README.md.')
+  }
+  if (isPages && !isStatic && command === 'build') {
     if (!configuredApiBase) throw new Error('GitHub Pages builds require the API_BASE_URL repository variable.')
     const parsedApiBase = new URL(configuredApiBase)
     if (parsedApiBase.protocol !== 'https:') throw new Error('GitHub Pages requires an HTTPS API_BASE_URL.')

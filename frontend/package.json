@@ -12,7 +12,9 @@
     "test": "vitest run",
     "typecheck": "tsc --noEmit -p tsconfig.json --pretty false && tsc --noEmit -p tsconfig.node.json --pretty false",
     "build": "tsc --noEmit -p tsconfig.json --pretty false && tsc --noEmit -p tsconfig.node.json --pretty false && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build:pages": "pnpm run typecheck && vite build --mode pages",
+    "preview:pages": "vite preview --mode pages"
   },
   "dependencies": {
     "react": "^19.2.7",

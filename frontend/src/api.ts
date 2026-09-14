@@ -7,10 +7,12 @@ import type {
   User,
   VehicleClass,
 } from './types'
+import { staticApi } from './staticApi'
 
 const ROOT = (import.meta.env.VITE_API_BASE_URL || '').replace(/\/+$/, '')
 const API = ROOT.endsWith('/api') ? ROOT : `${ROOT}/api`
-export const AUTH_ENABLED = import.meta.env.VITE_AUTH_ENABLED !== 'false'
+export const STATIC_DATA = import.meta.env.VITE_DATA_MODE === 'static'
+export const AUTH_ENABLED = !STATIC_DATA && import.meta.env.VITE_AUTH_ENABLED !== 'false'
 let csrfToken: string | null = null
 
 type AuthResponse = { csrf_token: string; user: User }
@@ -103,7 +105,7 @@ function queryString(values: Record<string, string | number | boolean | undefine
   return query.toString()
 }
 
-export const api = {
+const remoteApi = {
   nations: () => request<Nation[]>('/nations'),
   classes: () => request<VehicleClass[]>('/classes'),
   tree: (nation: string, vehicleClass: string) =>
@@ -135,3 +137,5 @@ export const api = {
       body: JSON.stringify({ progress }),
     }),
 }
+
+export const api = { ...remoteApi, ...(STATIC_DATA ? staticApi : {}) }

@@ -60,6 +60,16 @@ export type TreeResponse = {
 }
 
 export type RecentBattle = { rp: number; minutes: number }
+export type StaticCatalog = {
+  schema_version: 1
+  source: Record<string, string | null>
+  nations: Nation[]
+  classes: VehicleClass[]
+  nodes: Vehicle[]
+  edges: Edge[]
+  trees: Array<NonNullable<TreeResponse['meta']>>
+}
+
 export type ProgressEntry = { rp?: number; done?: boolean }
 export type ProgressPayload = Record<number, { rp_current: number; done: boolean }>
 

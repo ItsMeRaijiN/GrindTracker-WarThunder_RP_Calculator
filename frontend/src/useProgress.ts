@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { api, ApiError } from './api'
+import { api, ApiError, STATIC_DATA } from './api'
 import type { ProgressEntry, ProgressPayload, User } from './types'
 
 export type StoredProgress = ProgressEntry & { dirty?: boolean }
@@ -7,8 +7,8 @@ export type ProgressMap = Record<number, StoredProgress>
 export type RemoteProgressRow = { vehicle_id: number; rp_earned: number; done: boolean }
 export type ProgressUpdate = { vehicleId: number; rp: number; done: boolean; total?: number }
 
-const STORAGE_PREFIX = 'grindtracker:progress:v5:'
-const LEGACY_STORAGE_PREFIX = 'grindtracker:progress:v4:'
+const STORAGE_PREFIX = STATIC_DATA ? 'grindtracker:static-progress:v1:' : 'grindtracker:progress:v5:'
+const LEGACY_STORAGE_PREFIX = STATIC_DATA ? 'grindtracker:static-progress:v0:' : 'grindtracker:progress:v4:'
 const MAX_LOCAL_RP = 100_000_000
 
 function storageKey(user: User | null) {
